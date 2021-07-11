@@ -19,14 +19,14 @@ app.use(body.urlencoded({extended:true}));
 // ejs initialize
 app.set('view engine','ejs');
 // yaha peh thoda doubt hai /uploads kyun use kiya
-app.use('/upload',express.static(path.join(__dirname,'/upload')));
+app.use('/upload',express.static(path.join(__dirname, 'upload')));
 app.use(express.static(__dirname+"/public"));
 const storage=multer.diskStorage({
   destination:function(req,file,cb){
     cb(null,"upload");
   },
   filename:function(req,file,cb){
-    cb(null,file.fieldname+'-'+Date.now()+path.extname(file.originalname));
+    cb(null,file.fieldname+Date.now()+path.extname(file.originalname));
   }
 
 });
@@ -50,7 +50,7 @@ app.post('/',upload.single('image'),(req,res,next)=>{
 });
 app.post('/compress/:name/:ext',async(req,res)=>{
   console.log(req.params.name);
-  const files = await imagemin([__dirname+"upload/"+req.params.name], {
+  const files = await imagemin(["upload/"+req.params.name], {
     destination: "output",
     plugins: [
       moz({
