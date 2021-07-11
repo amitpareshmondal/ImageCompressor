@@ -19,7 +19,7 @@ app.use(body.urlencoded({extended:true}));
 // ejs initialize
 app.set('view engine','ejs');
 // yaha peh thoda doubt hai /uploads kyun use kiya
-app.use('/upload',express.static(path.join(__dirname,'upload')));
+app.use('/upload',express.static(path.join(__dirname,'/upload')));
 app.use(express.static(__dirname+"/public"));
 const storage=multer.diskStorage({
   destination:function(req,file,cb){
