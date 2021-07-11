@@ -69,7 +69,6 @@ await res.download(files[0].destinationPath);
 
 
 })
-const PORT = process.env.PORT || 3000||80;
-app.listen(PORT,()=>{
+app.listen(process.env.PORT || 3000,()=>{
   console.log("success");
 })
