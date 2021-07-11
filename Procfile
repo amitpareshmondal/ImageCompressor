@@ -1,1 +1,1 @@
-web:npm start index.mjs
+web:node your-script.js
