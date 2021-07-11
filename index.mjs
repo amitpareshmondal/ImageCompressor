@@ -50,7 +50,7 @@ app.post('/',upload.single('image'),(req,res,next)=>{
 });
 app.post('/compress/:name/:ext',async(req,res)=>{
   console.log(req.params.name);
-  const files = await imagemin(["upload/"+req.params.name], {
+  const files = await imagemin([__dirname+"upload/"+req.params.name], {
     destination: "output",
     plugins: [
       moz({
