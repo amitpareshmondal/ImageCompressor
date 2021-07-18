@@ -62,7 +62,7 @@ app.post('/compress/:name/:ext',async(req,res)=>{
     ]
   });
 
-await res.download(files[0].destinationPath);
+res.download(files[0].destinationPath);
 
 
 
