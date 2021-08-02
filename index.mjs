@@ -5,7 +5,6 @@ import ejs from 'ejs';
 import moz from 'imagemin-mozjpeg';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import imagemin from 'imagemin';
@@ -37,12 +36,18 @@ app.get('/',(req,res)=>{
 app.post('/',upload.single('image'),(req,res,next)=>{
  const file=req.file;
  var ext;
+ if(file==null){
+   res.render("nofile");
+ }
  if (file.mimetype=="image/jpeg"){
    ext='jpg';
  }
- if(file.mimetype=='image/png'){
+ else if(file.mimetype=='image/png'){
    ext='png';
  }
+else if(file.mimetype!="image/jpeg"||file.mimetype!='image/png'){
+  res.render("not_correct_file");
+}
  var a=file.path;
  var fina=file.path;
  var url=fina.replace(/\\/g,'/');
@@ -61,13 +66,10 @@ app.post('/compress/:name/:ext',async(req,res)=>{
       })
     ]
   });
-
 res.download(files[0].destinationPath);
-
-
-
-
-
+})
+app.get("/about-us",(req,res)=>{
+  res.render('aboutus')
 })
 app.listen(process.env.PORT || 3000,()=>{
   console.log("success");
