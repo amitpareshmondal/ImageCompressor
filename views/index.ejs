@@ -18,7 +18,7 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about-us">About us</a>
+        <a class="nav-link" href="/blog">Blog</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Contact us</a>
@@ -39,7 +39,8 @@
 <b>SELECT FILE</b></label><br> <br><span><b>Choosen File:</b></span><span id="name-file">None</span>
 
 <br> <br>
-    <input type="submit" name="" value="Upload" class="ubtn">
+    <input type="submit" name="" value="Upload" class="ubtn" id="ubtn">
+    <h1 id="hen"></h1>
   </form>
 </div>
 <br><br>
@@ -57,6 +58,11 @@ let  image=document.getElementById('image');
 image.addEventListener('change',(event)=>{
  let uploaded=event.target.files[0].name;
  fil.textContent=uploaded;
+})
+var a=document.getElementsByClassName('ubtn');
+a[0].addEventListener('click',()=>{
+  var b=document.getElementById('hen');
+  b.innerHTML="File is uploading......";
 })
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

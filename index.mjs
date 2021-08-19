@@ -59,7 +59,7 @@ app.post('/compress/:name/:ext',async(req,res)=>{
     destination: "output",
     plugins: [
       moz({
-         quality:50
+         quality:30
       }),
       imageminPngquant({
         quality: [0.1, 0.1]
@@ -68,7 +68,7 @@ app.post('/compress/:name/:ext',async(req,res)=>{
   });
 res.download(files[0].destinationPath);
 })
-app.get("/about-us",(req,res)=>{
+app.get("/blog",(req,res)=>{
   res.render('aboutus')
 })
 app.listen(process.env.PORT || 3000,()=>{
